@@ -3,16 +3,21 @@ package com.w4eret1ckrtb1tch.app36.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.w4eret1ckrtb1tch.app36.App
+import com.w4eret1ckrtb1tch.app36.data.AppDataBase
 import com.w4eret1ckrtb1tch.app36.databinding.ActivityMainBinding
 import com.w4eret1ckrtb1tch.app36.di.DaggerAppComponent
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
+import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import org.koin.core.qualifier.qualifier
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    //private val mainViewModel = App.instance.mainViewModel
-    @Inject
-    lateinit var mainViewModel: MainViewModel
+    //private val mainViewModel = App.instance.mainViewModel //defaults
+    //@Inject
+    //lateinit var mainViewModel: MainViewModel //dagger
+    private val mainViewModel: MainViewModel by inject() //koin
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
