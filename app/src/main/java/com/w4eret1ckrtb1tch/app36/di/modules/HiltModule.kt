@@ -5,16 +5,17 @@ import com.w4eret1ckrtb1tch.app36.data.BaseDataBase
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import javax.inject.Singleton
 
 @Module
-class ViewModelProviderModule {
+@InstallIn(ActivityComponent::class)
+object HiltModule {
 
-    @Singleton
     @Provides
     fun provideDataBase(): BaseDataBase = AppDataBase()
 
-    @Singleton
     @Provides
     fun provideViewModel(dataBase: BaseDataBase): MainViewModel = MainViewModel(dataBase)
 }
