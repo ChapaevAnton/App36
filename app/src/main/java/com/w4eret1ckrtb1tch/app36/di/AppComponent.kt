@@ -1,6 +1,6 @@
 package com.w4eret1ckrtb1tch.app36.di
 
-import android.app.Application
+import android.content.Context
 import com.w4eret1ckrtb1tch.app36.di.modules.AppModule
 import com.w4eret1ckrtb1tch.app36.view.MainActivity
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
@@ -20,6 +20,7 @@ interface AppComponent {
         fun build(): AppComponent
 
         @BindsInstance
-        fun application(application: Application): Builder
+        fun context(context: Context): Builder
     }
+
 }

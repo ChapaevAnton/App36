@@ -3,19 +3,15 @@ package com.w4eret1ckrtb1tch.app36.viewmodel
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.w4eret1ckrtb1tch.app36.App
 import com.w4eret1ckrtb1tch.app36.R
 import com.w4eret1ckrtb1tch.app36.data.BaseDataBase
 import javax.inject.Inject
 
-class MainViewModel(private val dataBase: BaseDataBase) {
+class MainViewModel @Inject constructor(
+    private val dataBase: BaseDataBase,
+    private val context: Context
 
-    init {
-
-    }
-
-    @Inject
-    lateinit var context: Context
+) {
 
     private val db = MutableLiveData<List<String>>()
 
