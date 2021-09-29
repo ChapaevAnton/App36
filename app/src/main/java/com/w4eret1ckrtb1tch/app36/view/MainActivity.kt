@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        DaggerAppComponent.create().inject(this)
-
+        App.appComponent.inject(this)
         mainViewModel.db().observe(this) { list ->
             val text = list.toString()
             binding.textView.text = text
