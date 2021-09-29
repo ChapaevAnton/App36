@@ -2,9 +2,7 @@ package com.w4eret1ckrtb1tch.app36.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.w4eret1ckrtb1tch.app36.App
 import com.w4eret1ckrtb1tch.app36.databinding.ActivityMainBinding
-import com.w4eret1ckrtb1tch.app36.di.DaggerAppComponent
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
 import javax.inject.Inject
 
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        App.appComponent.inject(this)
+
         mainViewModel.db().observe(this) { list ->
             val text = list.toString()
             binding.textView.text = text

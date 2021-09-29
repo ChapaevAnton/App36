@@ -6,13 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import com.w4eret1ckrtb1tch.app36.App
 import com.w4eret1ckrtb1tch.app36.R
 import com.w4eret1ckrtb1tch.app36.data.BaseDataBase
-import com.w4eret1ckrtb1tch.app36.di.DaggerAppComponent
 import javax.inject.Inject
 
 class MainViewModel(private val dataBase: BaseDataBase) {
 
     init {
-    App.appComponent.inject(this)
+
     }
 
     @Inject
