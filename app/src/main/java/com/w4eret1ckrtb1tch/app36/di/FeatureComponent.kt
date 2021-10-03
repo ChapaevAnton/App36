@@ -20,3 +20,7 @@ interface FeatureComponent {
 
 @Scope
 annotation class FeatureScope
+
+interface FeatureComponentInjector {
+    val featureComponent: FeatureComponent.Builder
+}

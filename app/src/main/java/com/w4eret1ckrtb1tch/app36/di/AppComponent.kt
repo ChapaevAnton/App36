@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AppModule::class])
-interface AppComponent {
+interface AppComponent : FeatureComponentInjector {
     fun inject(mainActivity: MainActivity)
     fun inject(mainViewModel: MainViewModel)
 
@@ -27,7 +27,5 @@ interface AppComponent {
     fun getFormatExporterSet(): Set<FormatExporter>
 
     fun getFormatExporterMap(): Map<String, FormatExporter>
-
-    fun featureComponent(): FeatureComponent.Builder
 
 }
