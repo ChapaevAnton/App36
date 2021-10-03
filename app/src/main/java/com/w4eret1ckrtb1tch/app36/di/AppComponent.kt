@@ -2,6 +2,7 @@ package com.w4eret1ckrtb1tch.app36.di
 
 import android.content.Context
 import com.w4eret1ckrtb1tch.app36.di.modules.AppModule
+import com.w4eret1ckrtb1tch.app36.multibindings.FormatExporter
 import com.w4eret1ckrtb1tch.app36.view.MainActivity
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
 import dagger.BindsInstance
@@ -22,5 +23,9 @@ interface AppComponent {
         @BindsInstance
         fun context(context: Context): Builder
     }
+
+    fun getFormatExporterSet(): Set<FormatExporter>
+
+    fun getFormatExporterMap(): Map<String, FormatExporter>
 
 }
