@@ -3,6 +3,7 @@ package com.w4eret1ckrtb1tch.app36.di.modules
 import android.content.Context
 import com.w4eret1ckrtb1tch.app36.data.AppDataBase
 import com.w4eret1ckrtb1tch.app36.data.BaseDataBase
+import com.w4eret1ckrtb1tch.app36.di.FeatureComponent
 import com.w4eret1ckrtb1tch.app36.multibindings.*
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
 import dagger.Module
@@ -12,7 +13,7 @@ import dagger.multibindings.IntoSet
 import dagger.multibindings.StringKey
 import javax.inject.Singleton
 
-@Module
+@Module(subcomponents = [FeatureComponent::class])
 class AppModule {
 
     @Singleton
@@ -43,15 +44,5 @@ class AppModule {
     @IntoMap
     @StringKey("csv")
     fun provideCsvFormatExporterMap(): FormatExporter = CsvFormatExporter()
-
-    // TODO: 03.10.2021 Lazy and Provides
-
-    @Provides
-    @One
-    fun provideFeatureOne(): Feature = FeatureImplOne()
-
-    @Provides
-    @Two
-    fun provideFeatureTwo(): Feature = FeatureImplTwo()
 
 }

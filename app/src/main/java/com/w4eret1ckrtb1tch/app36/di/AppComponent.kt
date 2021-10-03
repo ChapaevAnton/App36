@@ -28,4 +28,6 @@ interface AppComponent {
 
     fun getFormatExporterMap(): Map<String, FormatExporter>
 
+    fun featureComponent(): FeatureComponent.Builder
+
 }

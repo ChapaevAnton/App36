@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.w4eret1ckrtb1tch.app36.appComponent
 import com.w4eret1ckrtb1tch.app36.databinding.ActivityMainBinding
+import com.w4eret1ckrtb1tch.app36.featureComponent
 import com.w4eret1ckrtb1tch.app36.multibindings.Feature
-import com.w4eret1ckrtb1tch.app36.multibindings.One
 import com.w4eret1ckrtb1tch.app36.multibindings.Two
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
 import dagger.Lazy
@@ -23,12 +23,14 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appComponent.inject(this)
+        featureComponent.inject(this)
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        appComponent.inject(this)
         Log.d("TAG", "set: ${appComponent.getFormatExporterSet().size}")
         Log.d("TAG", "map: ${appComponent.getFormatExporterMap().entries}")
         Log.d("TAG", "lazy: ${feature.get().getString()}")
