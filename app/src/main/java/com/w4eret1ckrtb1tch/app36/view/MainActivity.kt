@@ -7,9 +7,9 @@ import com.w4eret1ckrtb1tch.app36.appComponent
 import com.w4eret1ckrtb1tch.app36.databinding.ActivityMainBinding
 import com.w4eret1ckrtb1tch.app36.featureComponent
 import com.w4eret1ckrtb1tch.app36.multibindings.Feature
+import com.w4eret1ckrtb1tch.app36.multibindings.FormatExporter
 import com.w4eret1ckrtb1tch.app36.multibindings.Two
 import com.w4eret1ckrtb1tch.app36.viewmodel.MainViewModel
-import dagger.Lazy
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +17,15 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
+    // FIXME: 04.10.2021 Вот это не инжектится, почему???
     @Inject
     @Two
-    lateinit var feature: Lazy<Feature>
+    lateinit var feature: Lazy<@JvmSuppressWildcards Feature>
+
+    @Inject
+    lateinit var formatSet: Set<@JvmSuppressWildcards FormatExporter>
+    @Inject
+    lateinit var formatMap: Map<@JvmSuppressWildcards String, @JvmSuppressWildcards FormatExporter>
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -28,12 +34,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
         featureComponent.inject(this)
-
+        Log.d("TAG", "set: ${formatSet.size}")
+        Log.d("TAG", "map: ${formatMap.entries}")
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.d("TAG", "set: ${appComponent.getFormatExporterSet().size}")
-        Log.d("TAG", "map: ${appComponent.getFormatExporterMap().entries}")
-        Log.d("TAG", "lazy: ${feature.get().getString()}")
 
         mainViewModel.db().observe(this) { list ->
             val text = list.toString()
